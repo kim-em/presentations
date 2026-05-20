@@ -104,6 +104,9 @@ FRO + Mathlib offsite, 20 May 2026
 
 So far this is a one way street: Lean changes something, and downstream repositories have to adapt.
 
+* Most Lean PRs automatically generate a `lean-pr-testing-NNNN` branch at Batteries+Mathlib+CSLib,
+and the CI result is reported back to Lean PR.
+* We can use Mathlib as a test suite, and
 
 * TODO: explain how Lean PRs are automatically tested, against what?
 * TODO: explain what goes wrong as `nightly-testing` falls behind
@@ -111,7 +114,7 @@ So far this is a one way street: Lean changes something, and downstream reposito
 
 # Updates to the Lean release process (Joscha)
 
-* TODO - what's changed recently? new automation?
+* TODO -
 
 # The downstream monorepo(s) (Joscha)
 
