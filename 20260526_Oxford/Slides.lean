@@ -2,7 +2,7 @@ import VersoSlides
 
 open VersoSlides
 
-#doc (Slides) "Presentation Title" =>
+#doc (Slides) "AI and mathematics --- Oxford 2026-05-26" =>
 %%%
 theme := "white"
 slideNumber := true
@@ -14,6 +14,7 @@ transition := "none"
 Kim Morrison
 
 Oxford, 26 May 2026
+https://tqft.net/talks/20260526-Oxford/
 
 # Lean
 
@@ -69,7 +70,7 @@ I'd be happy if that's true, and for today lets just take it for granted!
 
 * Gauss took an existing blueprint by a team led by Siddharth and Maryna,
   and formalized Maryna's resolution of sphere packing in 8 dimensions.
-* This was controversial, and Math Inc acted badly.
+* This was controversial, and Math Inc acted poorly.
 * Siddharth and Maryna's team are now digesting and rewriting the formalization.
 * Gauss followed up with a formalization of the 24-dimensional case.
 
@@ -102,15 +103,61 @@ I'd be happy if that's true, and for today lets just take it for granted!
 
 # Mathlib
 
-...
+* Mathlib is a big (~2 million lines) library of formalized mathematics in Lean.
+* It's curated and designed and reviewed by humans.
+* It's struggling to adapt to the arrival of AIs.
+* I'm optimistic that there's a good path forwards, but it requires
+  * technical demonstrations
+  * engineering and tooling to make review work sane
+  * lots of diplomacy
+
+# Downstream libraries
+
+* An ecosystem of libraries building on top of Mathlib is growing.
+* FLT, Carleson's theorem, CSLib, PhysLib, StacksLib, Prime Number Theorem, ...
+* ... using various amounts of AI.
+
+* The essential questions:
+  * how far out from the curated libraries can AIs successfully do formalization work?
+  * how will the existing biases of Mathlib's content affect future formalization and AI libraries?
+  * how do we keep all these libraries coherent, interoperable, and porous?
 
 # Mathlib Initiative
 
-...
+* We raised a bunch of money to fund "the boring work" for Mathlib
+* In a very loose sense it is a "child" of both the Mathlib maintainer team and the Lean Focused Research Organization.
+
+* Hires:
+  * engineers to handle: continuous integration, review tooling, linters, and automated review
+  * part time reviewers
+  * developers for maths-specific tactics and automation
+  * ... and now some money for computer algebra in Lean.
+  * ... and a collaboration with DeepMind to formalize the Stacks project
 
 # Formal Frontiers
 
-...
+* Just [announced](https://leanprover.zulipchat.com/#narrow/channel/113486-General-announcements/topic/New.20project.20at.20the.20Mathlib.20Initiative.3A.20Formal.20Frontier/near/597844932) three hours ago!
+* We've raised yet more money to try to "do autoformalization well".
+
+  {image "img/formal-frontiers.png" (height := "55vh")}[Formal Frontier announcement]
+
+# `formalization.yaml` standard
+
+* [`formalization.yaml` standard](https://github.com/mathlib-initiative/formalization.yaml/blob/main/formalization.yaml), encouraging self-reporting on:
+  * How was the formal artefact built?
+  * Which humans+AIs were involved, and how?
+  * Time, inference costs, other metrics.
+  * Coordination with informal authors, related/overlapping formalization projects.
+  * Quality of API, quality of proofs, readiness for integration into curated libraries.
+* By setting an expectation of self-reporting we hope to encourage good practices.
+* Open source harnesses and prompting for PDF-to-Lean pipelines.
+* Demonstrations of formalizations of research papers and books.
+
+# Initial formalization artefacts
+
+* Sutherland's MIT lecture notes on [algebraic number theory](https://formalfrontier.github.io/Sutherland-NumberTheory-verso/).
+* Bridgeland's ["Stability conditions on triangulated categories"](https://mattrobball.github.io/BridgelandStability/) Annals paper.
+* Etingof's textbook on representation theory.
 
 # The `lean-eval` leaderboard
 
@@ -122,6 +169,8 @@ I'd be happy if that's true, and for today lets just take it for granted!
 
 # The "Jacobian challenge"
 
+[{image "img/jacobian-challenge.png" (height := "60vh")}[Jacobian challenge]](https://github.com/leanprover-community/mathlib4-nightly-testing/blob/batteries-pr-testing-1818/MathlibTest/JacobianChallenge.lean)
+
 # Language choice, automation, and semantic search.
 
 * Does the language matter?
@@ -131,14 +180,14 @@ I'd be happy if that's true, and for today lets just take it for granted!
   * tooling and ecosystem (editors, profiling, build tools, libraries)
   * scalability
 
-* ... yes!
+* ... yes! [(1)](https://leodemoura.github.io/blog/2026-2-18-proof-assistants-in-the-age-of-ai/) [(2)](https://leodemoura.github.io/blog/2026-4-2-why-lean/)
 
 * Every layer of additional automation makes life easier for humans and for AIs.
 * Semantic search / premise selection reduces the LLM context size needed to work with large libraries.
 
 # Formalization and translation of software libraries
 
-* Can we just port the Rust + Python ecosystems into Lean, adding verification layers as well go?
+* Can we just port the Rust + Python ecosystems into Lean, adding verification layers as well go? [(1)](https://leodemoura.github.io/blog/2026-2-28-when-ai-writes-the-worlds-software-who-verifies-it/)
 
 [{image "img/leo-quote.png" (height := "60vh")}[Leo on lean-zip]](https://github.com/kim-em/lean-zip/blob/master/Zip/Spec/ZlibCorrect.lean#L146)
 
@@ -157,7 +206,7 @@ I'd be happy if that's true, and for today lets just take it for granted!
 
 * driven by an orchestrator running frontier model subagents
 
-  {image "img/orchestrator.png" (height := "20vh")}[orchestrator]
+  {image "img/orchestrator.png" (height := "40vh")}[orchestrator]
 
 # Computational algebra in Lean
 
@@ -197,5 +246,6 @@ We've written [research papers](https://grind-paper.netlify.app/) in Verso.
 
 # lean-workbench
 
-... coming soon?
-... Numina Fuse?
+Coming soon! [https://tqft.net/wb](https://tqft.net/wb)
+
+[https://178-105-254-142.sslip.io/guest-be69b2ca/abc](https://178-105-254-142.sslip.io/guest-be69b2ca/abc)

@@ -106,11 +106,15 @@ So far this is a one way street: Lean changes something, and downstream reposito
 
 * Most Lean PRs automatically generate a `lean-pr-testing-NNNN` branch at Batteries+Mathlib+CSLib,
 and the CI result is reported back to Lean PR.
-* We can use Mathlib as a test suite, and
+* We can use Mathlib as a test suite while working on the PR.
+* We can prepare adaptations for the downstream repos ahead of time.
 
-* TODO: explain how Lean PRs are automatically tested, against what?
-* TODO: explain what goes wrong as `nightly-testing` falls behind
-* TODO: or if `bump/nightly-YYYY-MM-DD` don't get reviewed/merged.
+* When the `nightly-testing` branches at downstream repos bump their toolchains to the next nightly,
+  we automatically merge any relevant `lean-pr-testing-NNNN` branches for PRs that landed in that nightly.
+
+* To make this work, the Lean PR must branch off a nightly release for which we know Mathlib compiles.
+  * The `nightly-with-mathlib` branch at `lean4` tracks the most recent nightly for which there is a corresponding `nightly-testing-YYYY-MM-DD` tag at `mathlib4`.
+  * This means that if `nightly-testing` keeps failing for several days, it is increasingly difficult to test lean4 PRs against Mathlib.
 
 # Downstream monorepo tooling (Joscha)
 

@@ -6,3 +6,32 @@
   background: #F8FAFC;
   box-shadow: none;
 }
+
+.title-slide .url {
+  font-size: 0.6em;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.6em;
+}
+.title-slide .url a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.reveal ul.column-list {
+  columns: 2;
+  column-gap: 2em;
+}
+.reveal ul.column-list > li {
+  break-inside: avoid;
+}
+
+.workbench-iframe {
+  display: block;
+  width: 96vw;
+  height: 82vh;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin: 0.5em auto 0;
+  background: #fff;
+}
